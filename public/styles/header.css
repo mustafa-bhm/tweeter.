@@ -1,0 +1,13 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 650px;
+  width: 100%;
+  background-color: #00d4ff;
+  background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+}
+.user-name h2 {
+  margin-top: 0px;
+}

@@ -1,0 +1,28 @@
+nav {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 120px;
+  background-color: #4056a1;
+  color: #ffffff;
+  top: 0;
+  width: 100%;
+  font-family: "Source Sans Pro", sans-serif;
+  border-radius: 0.5em;
+  box-shadow: 3px 10px 17px 3px #0000004f;
+}
+.logo {
+  margin: 1.5em;
+  font-family: Bungee, sans-serif;
+}
+.newTweet {
+  margin-top: 1.5em;
+  margin-right: 1.5em;
+}
+.arrow {
+  margin-right: 1em;
+  margin-top: 0.4em;
+  margin-left: 3.5em;
+  color: #d3200c;
+}
