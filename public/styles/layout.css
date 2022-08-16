@@ -32,3 +32,44 @@ main {
   margin: 0 5%;
   background-color: #f4f1ec;
 }
+
+/* old tweet styling  */
+
+article {
+  border: 2px solid black;
+  transition: box-shadow 0.3s;
+  height: 10em;
+  padding-right: 1em;
+  padding-left: 1em;
+  padding-top: 0.5em;
+  margin-top: 1em;
+}
+article:hover {
+  box-shadow: 7px 9px 7px -3px #000000;
+}
+
+.user-profile {
+  display: flex;
+}
+
+.old-tweet-header {
+  display: flex;
+  justify-content: space-between;
+}
+.users-name {
+  color: rgb(176, 170, 170);
+}
+
+.old-tweet-content {
+  border-bottom: 5px solid black;
+}
+.old-twwets-footer {
+  display: flex;
+  justify-content: space-between;
+}
+.tweets-icons {
+  padding-top: 1em;
+}
+.fas:hover {
+  color: rgb(240, 185, 117);
+}
