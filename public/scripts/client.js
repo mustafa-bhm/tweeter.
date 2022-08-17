@@ -65,13 +65,10 @@ $(document).ready(function () {
   };
   const renderTweets = function (dataBase) {
     //// rendering tweets
-    // for (const tweets of dataBase) {
-    //   const $tweet = createTweetElement(tweets);
-    //   $(".old-tweets").append($tweet);
-    // }
+    console.log(dataBase);
     dataBase.forEach((tweets) => {
       const $tweet = createTweetElement(tweets);
-      $(".old-tweets").append($tweet);
+      $(".tweets-container").append($tweet);
     });
   };
   // renderTweets(tweetData);
@@ -93,8 +90,6 @@ $(document).ready(function () {
       },
     });
   });
-
-  /// Loading tweets from /tweets/
   const loadTweets = function () {
     $.ajax({
       url: "/tweets/",
@@ -102,10 +97,12 @@ $(document).ready(function () {
     })
       .then((response) => {
         renderTweets(response);
+        console.log("====");
       })
       .catch((error) => {
         console.log("error:", error);
       });
   };
   loadTweets();
+  /// Loading tweets from /tweets/
 });
