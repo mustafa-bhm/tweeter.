@@ -69,16 +69,25 @@ $(document).ready(function () {
   $("form").on("submit", function (event) {
     event.preventDefault();
 
-    const newTweet = $(this).serialize();
+    const input = $("#tweet-text").val();
+    const tweetCount = $(this.counter).val();
 
-    $.ajax({
-      url: "/tweets/",
-      method: "POST",
-      data: newTweet,
-      success: function (data) {
-        $("#tweet-text").val(""); /// to clear  text area
-        loadTweets();
-      },
-    });
+    console.log("++++", input);
+    if (input === "") {
+      alert("Your Tweet is empty.");
+    } else if (tweetCount < 0) {
+      alert("Your Tweet has exceeded maximum characters.");
+    } else {
+      const newTweet = $(this).serialize();
+      $.ajax({
+        url: "/tweets/",
+        method: "POST",
+        data: newTweet,
+        success: function (data) {
+          $("#tweet-text").val(""); /// to clear  text area
+          loadTweets();
+        },
+      });
+    }
   });
 });
