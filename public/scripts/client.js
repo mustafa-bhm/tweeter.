@@ -4,35 +4,35 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(function () {
-  const tweetData = [
-    /// test database to be deleted later
-    {
-      user: {
-        name: "Newton",
-        avatars: "https://i.imgur.com/73hZDYK.png",
-        handle: "@SirIsaac",
-      },
-      content: {
-        text: "If I have seen further it is by standing on the shoulders of giants",
-      },
-      created_at: 1461116232227,
-    },
-    {
-      user: {
-        name: "Descartes",
-        avatars: "https://i.imgur.com/nlhLi3I.png",
-        handle: "@rd",
-      },
-      content: {
-        text: "Je pense , donc je suis",
-      },
-      created_at: 1461113959088,
-    },
-  ];
+  // const tweetData = [
+  //   /// test database to be deleted later
+  //   {
+  //     user: {
+  //       name: "Newton",
+  //       avatars: "https://i.imgur.com/73hZDYK.png",
+  //       handle: "@SirIsaac",
+  //     },
+  //     content: {
+  //       text: "If I have seen further it is by standing on the shoulders of giants",
+  //     },
+  //     created_at: 1461116232227,
+  //   },
+  //   {
+  //     user: {
+  //       name: "Descartes",
+  //       avatars: "https://i.imgur.com/nlhLi3I.png",
+  //       handle: "@rd",
+  //     },
+  //     content: {
+  //       text: "Je pense , donc je suis",
+  //     },
+  //     created_at: 1461113959088,
+  //   },
+  // ];
 
   const createTweetElement = function (data) {
     //// to creat tweets dynamicly
-    const $tweet = $(`<section class="old-tweets">
+    const $tweet = `<section class="old-tweets">
     <article>
       <header class="old-tweet-header">
         <div class="user-profile">
@@ -60,25 +60,31 @@ $(document).ready(function () {
         </div>
       </footer>
     </article>
-  </section>`);
+  </section>`;
     return $tweet;
   };
   const renderTweets = function (dataBase) {
     //// rendering tweets
-    for (let tweets of dataBase) {
+    // for (const tweets of dataBase) {
+    //   const $tweet = createTweetElement(tweets);
+    //   $(".old-tweets").append($tweet);
+    // }
+    dataBase.forEach((tweets) => {
       const $tweet = createTweetElement(tweets);
       $(".old-tweets").append($tweet);
-    }
+    });
   };
-  renderTweets(tweetData);
+  // renderTweets(tweetData);
 
   //// Form Submission using JQuery
-  $("form").submit(function (event) {
+  $("form").on("submit", function (event) {
     event.preventDefault();
+    // alert("nooooorefresh !");
+    console.log("no refresh");
     const newTweet = $(this).serialize();
 
     $.ajax({
-      url: "http://localhost:8080/tweets/",
+      url: "/tweets/",
       method: "POST",
       data: newTweet,
       success: function (data) {
@@ -87,4 +93,19 @@ $(document).ready(function () {
       },
     });
   });
+
+  /// Loading tweets from /tweets/
+  const loadTweets = function () {
+    $.ajax({
+      url: "/tweets/",
+      method: "GET",
+    })
+      .then((response) => {
+        renderTweets(response);
+      })
+      .catch((error) => {
+        console.log("error:", error);
+      });
+  };
+  loadTweets();
 });
