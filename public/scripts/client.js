@@ -4,34 +4,9 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(document).ready(function () {
-  // const tweetData = [
-  //   /// test database to be deleted later
-  //   {
-  //     user: {
-  //       name: "Newton",
-  //       avatars: "https://i.imgur.com/73hZDYK.png",
-  //       handle: "@SirIsaac",
-  //     },
-  //     content: {
-  //       text: "If I have seen further it is by standing on the shoulders of giants",
-  //     },
-  //     created_at: 1461116232227,
-  //   },
-  //   {
-  //     user: {
-  //       name: "Descartes",
-  //       avatars: "https://i.imgur.com/nlhLi3I.png",
-  //       handle: "@rd",
-  //     },
-  //     content: {
-  //       text: "Je pense , donc je suis",
-  //     },
-  //     created_at: 1461113959088,
-  //   },
-  // ];
-
   const createTweetElement = function (data) {
     //// to creat tweets dynamicly
+    const time = timeago.format(data.created_at);
     const $tweet = `<section class="old-tweets">
     <article>
       <header class="old-tweet-header">
@@ -53,7 +28,7 @@ $(document).ready(function () {
           ${data.content.text}</p>
       </div>
       <footer class="old-twwets-footer">
-        <div><p>${data.created_at}</p></div>
+        <div><p>${time}</p></div>
         <div class="tweets-icons">
           <i class="fas fa-flag"></i><i class="fas fa-retweet"></i
           ><i class="fas fa-heart"></i>
@@ -63,6 +38,25 @@ $(document).ready(function () {
   </section>`;
     return $tweet;
   };
+  //// Form Submission using JQuery
+  $("form").on("submit", function (event) {
+    event.preventDefault();
+    // alert("nooooorefresh !");
+    // console.log("no refresh");
+    const newTweet = $(this).serialize();
+
+    $.ajax({
+      url: "http://localhost:8080/tweets/",
+      method: "POST",
+      data: newTweet,
+      success: function (data) {
+        console.log("success");
+        console.log(this.data);
+        $("#tweet-text").val(""); /// to clear tweet text area
+        loadTweets();
+      },
+    });
+  });
   const renderTweets = function (dataBase) {
     //// rendering tweets
     console.log(dataBase);
@@ -71,28 +65,11 @@ $(document).ready(function () {
       $(".tweets-container").append($tweet);
     });
   };
-  // renderTweets(tweetData);
 
-  //// Form Submission using JQuery
-  $("form").on("submit", function (event) {
-    event.preventDefault();
-    // alert("nooooorefresh !");
-    console.log("no refresh");
-    const newTweet = $(this).serialize();
-
-    $.ajax({
-      url: "/tweets/",
-      method: "POST",
-      data: newTweet,
-      success: function (data) {
-        console.log("success");
-        console.log(this.data);
-      },
-    });
-  });
+  /// Loading/fetching tweets from /tweets/
   const loadTweets = function () {
     $.ajax({
-      url: "/tweets/",
+      url: "http://localhost:8080/tweets/",
       method: "GET",
     })
       .then((response) => {
@@ -104,5 +81,4 @@ $(document).ready(function () {
       });
   };
   loadTweets();
-  /// Loading tweets from /tweets/
 });
