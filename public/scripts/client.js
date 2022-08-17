@@ -68,8 +68,23 @@ $(document).ready(function () {
     for (let tweets of dataBase) {
       const $tweet = createTweetElement(tweets);
       $(".old-tweets").append($tweet);
-      console.log(tweets.content.text);
     }
   };
   renderTweets(tweetData);
+
+  //// Form Submission using JQuery
+  $("form").submit(function (event) {
+    event.preventDefault();
+    const newTweet = $(this).serialize();
+
+    $.ajax({
+      url: "http://localhost:8080/tweets/",
+      method: "POST",
+      data: newTweet,
+      success: function (data) {
+        console.log("success");
+        console.log(this.data);
+      },
+    });
+  });
 });
