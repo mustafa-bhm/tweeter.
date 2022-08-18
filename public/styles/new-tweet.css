@@ -39,3 +39,14 @@ textarea {
 .redCounter {
   color: red;
 }
+.error {
+  border: 2px solid red;
+  color: red;
+  border-radius: 0.5em;
+  padding-left: 1em;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+}
+.display {
+  display: none;
+}

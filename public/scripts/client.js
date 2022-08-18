@@ -81,10 +81,12 @@ $(document).ready(function () {
 
     console.log("++++", tweetCount);
     if (input === "") {
-      alert("Your Tweet is empty.");
+      $("#empty-tweet").removeClass("display").slideDown(); /// validation Error - removing a class to display the error.
     } else if (tweetCount < 0) {
-      alert("Your Tweet has exceeded maximum characters.");
+      $("#too-long").removeClass("display").slideDown(); /// validation Error - removing a class to display the error.
     } else {
+      $("#empty-tweet").addClass("display"); /// adding the class back to hide the error msg
+      $("#too-long").addClass("display"); /// adding the class back to hide the error msg
       const newTweet = $(this).serialize();
       $.ajax({
         url: "/tweets/",

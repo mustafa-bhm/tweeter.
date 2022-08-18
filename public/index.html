@@ -65,7 +65,6 @@
           alt="astronaut-avatar"
           class="profile-avatar"
         />
-        <!-- <i class="fa-solid fa-user-astronaut"></i> -->
       </div>
       <br />
       <div class="user-name">
@@ -75,6 +74,15 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
+        <div class="error display" id="too-long">
+          <i class="fa-solid fa-circle-exclamation"></i>Your Tweet has exceeded
+          maximum characters.<i class="fa-solid fa-circle-exclamation"></i>
+        </div>
+        <div class="error display" id="empty-tweet">
+          <i class="fa-solid fa-circle-exclamation"></i>Your Tweet is empty.<i
+            class="fa-solid fa-circle-exclamation"
+          ></i>
+        </div>
         <h2>Compose Tweet</h2>
         <form method="POST" action="/tweets">
           <label for="tweet-text">What are you humming about?</label>
