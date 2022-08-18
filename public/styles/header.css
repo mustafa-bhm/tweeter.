@@ -5,9 +5,12 @@
   flex-direction: column;
   height: 650px;
   width: 100%;
-  background-color: #00d4ff;
+  background-color: #3399ad;
   background-image: url("https://www.transparenttextures.com/patterns/arches.png");
 }
 .user-name h2 {
   margin-top: 0px;
+}
+.profile-avatar {
+  width: 15em;
 }

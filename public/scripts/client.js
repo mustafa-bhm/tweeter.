@@ -5,6 +5,12 @@
  */
 $(document).ready(function () {
   const createTweetElement = function (data) {
+    /// prevent XSS using Escaping
+    const escape = function (str) {
+      let div = document.createElement("div");
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    };
     //// to creat tweets dynamicly
     const time = timeago.format(data.created_at);
     const $tweet = `<section class="old-tweets">
@@ -25,7 +31,7 @@ $(document).ready(function () {
       </header>
       <div class="old-tweet-content">
         <p>
-          ${data.content.text}</p>
+          ${escape(data.content.text)}</p>
       </div>
       <footer class="old-twwets-footer">
         <div><p>${time}</p></div>
@@ -38,6 +44,7 @@ $(document).ready(function () {
   </section>`;
     return $tweet;
   };
+
   //// rendering tweets
 
   const renderTweets = function (dataBase) {
@@ -72,7 +79,7 @@ $(document).ready(function () {
     const input = $("#tweet-text").val();
     const tweetCount = $(this.counter).val();
 
-    console.log("++++", input);
+    console.log("++++", tweetCount);
     if (input === "") {
       alert("Your Tweet is empty.");
     } else if (tweetCount < 0) {
@@ -85,6 +92,7 @@ $(document).ready(function () {
         data: newTweet,
         success: function (data) {
           $("#tweet-text").val(""); /// to clear  text area
+          $(".counter").val("140"); /// set counter back to initial value
           loadTweets();
         },
       });
