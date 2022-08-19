@@ -1,6 +1,8 @@
-$(document).ready(function () {
+/// To update the characters count /////
+
+$(document).ready(function() {
   const tweetText = $("#tweet-text");
-  tweetText.on("input", function () {
+  tweetText.on("input", function() {
     const NumberOfChara = 140;
     const textLength = $(this).val().length;
     const remainingChara = NumberOfChara - textLength;

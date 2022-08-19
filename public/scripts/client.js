@@ -3,10 +3,10 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-$(document).ready(function () {
-  const createTweetElement = function (data) {
+$(document).ready(function() {
+  const createTweetElement = function(data) {
     /// prevent XSS using Escaping
-    const escape = function (str) {
+    const escape = function(str) {
       let div = document.createElement("div");
       div.appendChild(document.createTextNode(str));
       return div.innerHTML;
@@ -47,7 +47,7 @@ $(document).ready(function () {
 
   //// rendering tweets
 
-  const renderTweets = function (dataBase) {
+  const renderTweets = function(dataBase) {
     //// rendering tweets
     console.log(dataBase);
     $(".tweets-container").empty();
@@ -57,7 +57,7 @@ $(document).ready(function () {
     });
   };
   /// Loading/fetching tweets from /tweets/
-  const loadTweets = function () {
+  const loadTweets = function() {
     $.ajax({
       url: "/tweets/",
       method: "GET",
@@ -73,7 +73,7 @@ $(document).ready(function () {
   loadTweets();
 
   //// Form Submission using JQuery
-  $("form").on("submit", function (event) {
+  $("form").on("submit", function(event) {
     event.preventDefault();
 
     const input = $("#tweet-text").val();
@@ -92,7 +92,7 @@ $(document).ready(function () {
         url: "/tweets/",
         method: "POST",
         data: newTweet,
-        success: function (data) {
+        success: function(data) {
           $("#tweet-text").val(""); /// to clear  text area
           $(".counter").val("140"); /// set counter back to initial value
           loadTweets();
