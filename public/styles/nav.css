@@ -1,4 +1,4 @@
-nav {
+/* nav {
   position: fixed;
   display: flex;
   flex-direction: row;
@@ -11,7 +11,7 @@ nav {
   font-family: "Source Sans Pro", sans-serif;
   border-radius: 0.5em;
   box-shadow: 3px 10px 17px 3px #0000004f;
-}
+} */
 .logo {
   margin: 1.5em;
   font-family: Bungee, sans-serif;

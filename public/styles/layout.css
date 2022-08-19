@@ -71,9 +71,107 @@ article:hover {
   display: flex;
   justify-content: space-between;
 }
+
 .tweets-icons {
-  padding-top: 1em;
+  padding-top: 0.3em;
 }
 .fas:hover {
   color: rgb(240, 185, 117);
+}
+/* Phone Styles  */
+
+@media only screen and (min-width: 320px) and (max-width: 699px) {
+  nav {
+    background-color: #3399ad;
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+  }
+
+  .users-profile {
+    background-color: #3399ad;
+  }
+  .newTweet {
+    text-align: center;
+  }
+  .arrow {
+    color: black;
+    margin-right: 11em;
+  }
+  body {
+    font-size: 15px;
+  }
+  .old-tweet-content p {
+    height: 2em;
+    margin-bottom: 0.5em;
+    overflow-y: scroll;
+  }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 700px) {
+  nav {
+    background-color: #3399ad;
+    /* border: 6px solid rosybrown; */
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+  }
+  .container {
+    margin-top: 1.5em;
+  }
+  .users-profile {
+    background-color: #3399ad;
+  }
+  .time {
+    margin-top: 0.2em;
+  }
+  body {
+    font-size: 18px;
+  }
+}
+
+/* Desktop styles */
+@media only screen and (min-width: 1024px) {
+  nav {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 120px;
+    background-color: #4056a1;
+    color: #ffffff;
+    top: 0;
+    width: 100%;
+    font-family: "Source Sans Pro", sans-serif;
+    border-radius: 0.5em;
+    box-shadow: 3px 10px 17px 3px #0000004f;
+  }
+  .header-main {
+    display: flex;
+    margin-top: 10em;
+    margin-left: 2em;
+  }
+  .users-profile {
+    border: 5px solid black;
+
+    width: 510px;
+    height: 20em;
+  }
+
+  .time {
+    margin-top: 0.2em;
+  }
+  body {
+    font-size: 24px;
+  }
+  .old-tweet-content p {
+    height: 2em;
+    margin-bottom: 0.5em;
+    overflow-y: scroll;
+  }
 }

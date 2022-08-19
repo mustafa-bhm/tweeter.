@@ -34,7 +34,7 @@ $(document).ready(function () {
           ${escape(data.content.text)}</p>
       </div>
       <footer class="old-twwets-footer">
-        <div><p>${time}</p></div>
+        <div ><p class= "time">${time}</p></div>
         <div class="tweets-icons">
           <i class="fas fa-flag"></i><i class="fas fa-retweet"></i
           ><i class="fas fa-heart"></i>
