@@ -17,7 +17,7 @@ This is a responsive , simple and single-page Twitter clone, built with HTML5, C
 ## Getting Started
 
 - Install dependencies using the npm install command.
-- Start the web server using the npm run local command. The app will be served at http://localhost:8080/.
+- Start the web server using the npm run local command.
 - Go to http://localhost:8080/ in your browser.
 
 ## Dependencies
